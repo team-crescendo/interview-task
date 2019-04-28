@@ -10,6 +10,12 @@
 <br>
 1. 아래의 데이터(books.json) 에 같은 `category` 의 `price` 를 모두 합쳐 `result1.json` 에 저장해주세요.
 2. 같은 `category` 의 `name` 을 컴마로 구분하여 `result2.json` 에 저장해주세요. 단, 순서는 id 기준으로 내림차순입니다.
+3. 라라벨 아티즌 커맨드로 만들어 위 1,2 번을 실행해주세요. (라우트를 파서 메서드 접근 X)
+
+### 조건
+- `BookController` 에 `convertCategoriesPrice()` 메서드를 만들어 1번을 구현 해주세요.
+- `BookController` 에 `mergeCategoriesName()` 메서드를 만들어 2번을 구현 해주세요.
+- 커맨드 명은 `BookUpdater` 로 해주시고, 콘솔 커맨드는 `php artisan book:update` 로 실행 가능하게 해주세요.
 
 ```json
 [
