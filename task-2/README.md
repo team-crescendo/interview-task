@@ -17,6 +17,9 @@
 - `BookController` 에 `mergeCategoriesName()` 메서드를 만들어 2번을 구현 해주세요.
 - 커맨드 명은 `BookUpdater` 로 해주시고, 콘솔 커맨드는 `php artisan book:update` 로 실행 가능하게 해주세요.
 
+### 파일 안내
+`books.json`, `result1.json`, `result2.json` 은 `public/forte` 경로를 생성하여 넣어주세요.
+
 ```json
 [
     {
