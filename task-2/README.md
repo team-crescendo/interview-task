@@ -8,8 +8,8 @@
 <br>
 해당 과제는 세번째 과제(task-3)와 연관되어 있습니다.
 <br>
-1. 아래의 데이터(books.json) 에 같은 `category` 의 `price` 를 모두 합쳐 `result1.json` 에 저장해주세요.
-2. 같은 `category` 의 `name` 을 컴마로 구분하여 `result2.json` 에 저장해주세요. 단, 순서는 id 기준으로 내림차순입니다.
+1. 아래의 데이터(books.json) 에 같은 `category` 의 `price` 를 모두 합쳐 `result1.json` 에 저장해주세요. (순서 상관 없습니다)
+2. 같은 `category` 의 `name` 을 컴마로 구분하여 `result2.json` 에 저장해주세요. (단, 순서는 id 기준으로 내림차순입니다)
 3. 라라벨 아티즌 커맨드로 만들어 위 1,2 번을 실행해주세요. (라우트를 파서 메서드 접근 X)
 
 ### 조건
@@ -63,5 +63,41 @@
         "category": "Tour",
         "price": "41000"
     }
+]
+```
+
+### 결과
+
+> result1.json
+
+```json
+[
+    {
+        "name": "Programming",
+        "price": 37500
+    }, {
+        "name": "Stock",
+        "price": 40000
+    }, {
+        "name": "Design",
+        "price": 22050
+    }, {
+        "name": "Tour",
+        "price": 50000
+    }
+]
+```
+
+> result2.json
+
+```json
+[
+    {
+        "category": "Programming",
+        "name": "Crescendo Music Notation Editor, Laravel5 by kevin, Forte API Documentation"
+    }
+        .
+        .
+        .
 ]
 ```
