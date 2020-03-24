@@ -1,7 +1,7 @@
 ## First Task
 
 ### 사용 언어
-- Laravel 5.6 이상 (PHP Framework)
+- 모든 서버사이드 언어 사용 가능합니다.
 
 ### 내용
 책 관리 `CRUD` 역할을 하는 REST API 의 라우트와 컨트롤러를 만들어주세요.

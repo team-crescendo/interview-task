@@ -1,8 +1,5 @@
 ## Thrid Task
 
-### 사용 언어
-- Laravel 5.6 이상 (PHP Framework)
-
 ### 내용
 최종 과제입니다. MVCS 패턴을 이용해 CRUD 가 가능한 REST API 서버를 개발 해주세요.
 
@@ -12,8 +9,3 @@
 4. 책 ID 에 해당되는 하나의 데이터를 보여줍니다.
 5. 책 ID 에 해당되는 내용을 업데이트 합니다.
 6. 책 ID 에 해당되는 책을 삭제합니다.
-
-### 조건
-- 모델 네이밍: Book
-- 컨트롤러 네이밍: BookController
-- 서비스 네이밍: BookService
