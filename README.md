@@ -45,6 +45,7 @@
     - 모든 Todo 데이터를 이용하여 `Todo API`의 규격에 맞는 CSV 파일을 생성합니다.
 4. Todo 검색 기능 API
     - `title`, `completed` 검색 기능을 구현해주세요. 
+        - `search` parameter (조건식은 문자열 형식으로 입력 받습니다.)
         - ex) completed equals true
         - ex) title LIKE '%forte%' OR completed eq false
             - eq: equal (=)
