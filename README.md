@@ -46,6 +46,8 @@
 4. Todo 검색 기능 API
     - `title`, `completed` 검색 기능을 구현해주세요. 
         - ex) completed equals true
-        - ex) title LIKE '%forte%' OR completed equals false
-        - ex) title LIKE 'kevin%' AND completed equals true
+        - ex) title LIKE '%forte%' OR completed eq false
+            - eq: equal (=)
+        - ex) title LIKE 'kevin%' AND completed neq true
+            - neq: not equal (!=)
     - 조건에 만족하는 결과가 없다면 에러를 반환합니다.
