@@ -2,84 +2,83 @@
 
 namespace App\Http\Controllers;
 
-use App\Todo;
-use Illuminate\Http\Request;
+use App\Http\Requests\TodoStore;
+use App\Http\Requests\TodoUpdate;
+use App\Models\Todo;
+use League\Csv\Writer;
 
 class TodoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    // READ_ALL
     public function index()
     {
-        //
+        $todos = Todo::all();
+
+        return response()->forte(200, 'Successful', $todos);
     }
 
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
+    // READ_ONE
+    public function show($id)
     {
-        //
+        $todo = Todo::find($id);
+
+        if (is_null($todo)) return response()->forte(404, 'Not Found');
+
+        return response()->forte(200, 'Successful', $todo);
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
+    // CREATE
+    public function store(TodoStore $request)
     {
-        //
+        $todo = Todo::create($request->all());
+
+        return response()->forte(200, 'Successful', $todo);
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Todo  $todo
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Todo $todo)
+    // UPDATE
+    public function update(TodoUpdate $request, $id)
     {
-        //
+        $todo = Todo::find($id);
+
+        if (is_null($todo)) return response()->forte(404, 'Not Found');
+
+        $todo->update($request->only('title', 'completed'));
+
+        return response()->forte(200, 'Successful', $todo);
     }
 
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Todo  $todo
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Todo $todo)
+    // DELETE
+    public function destroy($id)
     {
-        //
+        $todo = Todo::find($id);
+
+        if (is_null($todo)) return response()->forte(404, 'Not Found');
+
+        $todo->delete();
+
+        return response()->forte(200, 'Successful');
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Todo  $todo
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Todo $todo)
+    // DOWNLOAD
+    public function download()
     {
-        //
+        $todos = Todo::all();
+
+        $csv = Writer::createFromFileObject(new \SplTempFileObject());
+        $csv->insertOne(['userId', 'id', 'title', 'completed']);
+
+        foreach ($todos as $todo) {
+            $csv->insertOne([$todo->user_id, $todo->id, $todo->title, ($todo->completed ? 'true' : 'false')]);
+        }
+
+        $csv->output('todos.csv');
+
+        return;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Todo  $todo
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Todo $todo)
+    // SEARCH
+    public function search()
     {
-        //
+        // TODO
     }
 }
