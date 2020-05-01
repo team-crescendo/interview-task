@@ -52,3 +52,16 @@
         - ex) title LIKE 'kevin%' AND completed neq true
             - neq: not equal (!=)
     - 조건에 만족하는 결과가 없다면 에러를 반환합니다.
+
+### API Documentation
+> *POST 파라메터의 경우 JSON Body로 전달합니다.*
+
+| Method | Endpoint | Description | Parameter | Remark |
+| --- | --- | --- | --- | --- |
+| GET | api/todo | 전체 Todo 아이템을 조회합니다. | - | - |
+| POST | api/todo | Todo 아이템을 추가합니다. | user_id, title, completed | - |
+| GET | api/todo/{id} | Todo 아이템을 조회합니다. | id | - |
+| PUT | api/todo/{id} | Todo 아이템을 업데이트합니다. | id | - |
+| DELETE | api/todo/{id} | Todo 아이템을 삭제합니다. | id | - |
+| GET | api/todo/download | 전체 Todo 목록을 CSV로 다운로드 합니다. | - | - |
+| GET | api/todo/search | 조건에 따른 Todo 아이템을 검색합니다. | title, completed | 두 파라메터 모두 Optional 하며, 아무 것도 입력하지 않을 시 `400 Parameter Required` 오류가 표출됩니다.|
