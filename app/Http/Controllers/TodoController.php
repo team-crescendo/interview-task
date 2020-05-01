@@ -4,14 +4,18 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\TodoStore;
 use App\Http\Requests\TodoUpdate;
-use App\Models\Todo;
-use App\Services\ExportCSV;
 use Illuminate\Http\Request;
+use App\Models\Todo;
 use League\Csv\Writer;
+use Symfony\Component\HttpFoundation\JsonResponse;
+use Symfony\Component\HttpFoundation\BinaryFileResponse;
 
 class TodoController extends Controller
 {
-    // READ_ALL
+    /**
+     * Show all items
+     * @return JsonResponse
+     */
     public function index()
     {
         $todos = Todo::all();
@@ -19,7 +23,11 @@ class TodoController extends Controller
         return response()->forte(200, 'Successful', $todos);
     }
 
-    // READ_ONE
+    /**
+     * Show one item
+     * @param Todo $id
+     * @return JsonResponse
+     */
     public function show($id)
     {
         $todo = Todo::find($id);
@@ -29,7 +37,11 @@ class TodoController extends Controller
         return response()->forte(200, 'Successful', $todo);
     }
 
-    // CREATE
+    /**
+     * Store item
+     * @param TodoStore $request
+     * @return JsonResponse
+     */
     public function store(TodoStore $request)
     {
         $todo = Todo::create($request->all());
@@ -37,7 +49,12 @@ class TodoController extends Controller
         return response()->forte(200, 'Successful', $todo);
     }
 
-    // UPDATE
+    /**
+     * Update item
+     * @param TodoUpdate $request
+     * @param Todo $id
+     * @return JsonResponse
+     */
     public function update(TodoUpdate $request, $id)
     {
         $todo = Todo::find($id);
@@ -49,7 +66,11 @@ class TodoController extends Controller
         return response()->forte(200, 'Successful', $todo);
     }
 
-    // DELETE
+    /**
+     * Destroy item
+     * @param Todo $id
+     * @return JsonResponse
+     */
     public function destroy($id)
     {
         $todo = Todo::find($id);
@@ -61,7 +82,10 @@ class TodoController extends Controller
         return response()->forte(200, 'Successful');
     }
 
-    // DOWNLOAD
+    /**
+     * Download all items
+     * @return BinaryFileResponse
+     */
     public function download()
     {
         $todos = Todo::all();
@@ -78,7 +102,11 @@ class TodoController extends Controller
         return;
     }
 
-    // SEARCH
+    /**
+     * Search item with query parameter
+     * @param Request $request
+     * @return JsonResponse
+     */
     public function search(Request $request)
     {
         if (!isset($request->title) && !isset($request->completed)) {
