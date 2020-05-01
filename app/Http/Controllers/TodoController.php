@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TodoStore;
 use App\Http\Requests\TodoUpdate;
 use App\Models\Todo;
+use Illuminate\Http\Request;
 use League\Csv\Writer;
 
 class TodoController extends Controller
@@ -77,8 +78,12 @@ class TodoController extends Controller
     }
 
     // SEARCH
-    public function search()
+    public function search(Request $request)
     {
-        // TODO
+        $todos = Todo::title($request->title)->completed($request->boolean('completed'))->get();
+
+        if ($todos->count() == 0) return response()->forte(404, 'Not Found');
+
+        return response()->forte(200, 'Successful', $todos);
     }
 }

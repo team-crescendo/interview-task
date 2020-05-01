@@ -16,4 +16,14 @@ class Todo extends Model
     {
         return $this->belongsTo('App\Models\User');
     }
+
+    public function scopeTitle($query, $title)
+    {
+        return $query->where('title', 'LIKE', '%' . $title . '%');
+    }
+
+    public function scopeCompleted($query, $completed)
+    {
+        return $query->where('completed', $completed);
+    }
 }
