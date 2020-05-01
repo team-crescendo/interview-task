@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Requests\TodoStore;
 use App\Http\Requests\TodoUpdate;
 use App\Models\Todo;
+use App\Services\ExportCSV;
 use Illuminate\Http\Request;
 use League\Csv\Writer;
 
@@ -80,9 +81,11 @@ class TodoController extends Controller
     // SEARCH
     public function search(Request $request)
     {
-        $todos = Todo::title($request->title)->completed($request->boolean('completed'))->get();
+        if (!isset($request->title) && !isset($request->completed)) {
+            return response()->forte(400, 'Parameter Required');
+        }
 
-        if ($todos->count() == 0) return response()->forte(404, 'Not Found');
+        $todos = Todo::title($request->title)->completed($request->boolean('completed'))->get();
 
         return response()->forte(200, 'Successful', $todos);
     }
