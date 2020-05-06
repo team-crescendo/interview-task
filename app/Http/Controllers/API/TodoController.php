@@ -3,62 +3,91 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Rules\AllBoolean;
+use App\Services\CsvService;
+use App\Todo;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class TodoController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+
     public function index()
     {
-        //
+        return Todo::getAll();
     }
 
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+
     public function store(Request $request)
     {
-        //
+        $validatedData = $request->validate([
+            'userId' => 'required',
+            'title' => 'required',
+            'completed' => ['required', new AllBoolean()]
+        ]);
+
+        $todo = Todo::create([
+            "userId" => $validatedData['userId'],
+            "title" => $validatedData['title'],
+            "completed" => (bool) $validatedData['completed']
+        ]);
+
+        return $todo;
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $todo = Todo::findOrFail($id);
+        return $todo;
     }
 
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function update(Request $request, $id)
     {
-        //
+        $validatedData = $request->validate([
+            'title' => '',
+            'completed' => [new AllBoolean()]
+        ]);
+
+        $todo = Todo::findOrFail($id);
+
+        $todo->title = $validatedData["title"];
+        $todo->completed = $validatedData["completed"];
+
+        return $todo;
     }
 
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function destroy($id)
     {
-        //
+        $todo = Todo::findOrFail($id);
+        $todo->delete();
+
+        return response(null, 204);
+    }
+
+    public function downloadCsv(CsvService $csv)
+    {
+        return $csv->export(Todo::getAll());
+    }
+
+    public function search(Request $request)
+    {
+        $search = $request->input("search");
+
+        $search = str_replace("neq", "!=", $search);
+        $search = str_replace("eq", "=", $search);
+        $search = str_replace("equals", "=", $search);
+
+        try {
+            $todos = DB::table('todos')->whereRaw($search?:null)->get();
+        } catch (\Exception $exception) {
+            abort(500, "Search Failed");
+        }
+
+        if (count($todos) == 0)
+        {
+            abort(404, "No matching todos");
+        }
+
+        return $todos;
     }
 }
