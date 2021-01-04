@@ -6,9 +6,10 @@
 
 ### 과제 제한사항 안내
 
-- Laravel Framework 6 (PHP 7.3 이상)
+- Laravel Framework 5.7+, PHP 7.3+
 - MVC 패턴을 이용하여 과제를 수행해도 됩니다.
     - Service Layer 를 이용하신다면 가산점이 부여됩니다.
+- 적어도 1개 이상의 Test 코드를 작성해주세요.
 
 그 외 제한사항은 없습니다.
 
