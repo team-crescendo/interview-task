@@ -1,0 +1,17 @@
+module.exports = {
+  parser: "@typescript-eslint/parser",
+  plugins: ["@typescript-eslint"],
+  extends: [
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:prettier/recommended",
+  ],
+  settings: {
+    "import/resolver": {
+      node: {
+        extensions: ["ts"],
+      },
+    },
+  },
+}
