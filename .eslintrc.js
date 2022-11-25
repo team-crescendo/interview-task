@@ -8,6 +8,7 @@ module.exports = {
     "plugin:prettier/recommended",
   ],
   settings: {
+    "import/namespace": "off",
     "import/extensions": [".ts"],
     "import/parsers": {
       "@typescript-eslint/parser": [".ts"],
