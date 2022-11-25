@@ -1,7 +1,6 @@
 # 크시 2022 개발자 과제: 미니 크시 만들기
 
 - **작성**: 키뮤 (@키뮤, 크시 팀장, 크시 기획 및 컨텐츠 개발 담당)
-- 최종 수정일: 22.11.25
 
 ## 1. 디스코드 봇 만들기
 ### 1.1. 개요
@@ -10,10 +9,11 @@
 
 개발 과정은 **퍼블릭 git 레포지토리를 통하여 공개**되어야 하며, 커밋 메시지 등의 개발 과정이 온전히 기록되어야 합니다. 개발 언어는 타입스크립트로 하며 패키지 매니저는 npm 대신 크시가 사용하는 **yarn `v3 이상`의 사용을 권장**합니다.
 
+
 ### 1.2. 라이브러리 요구사항
 - **필수 라이브러리**
     - **discord.js `v14.3 이상`** (참고: [웹사이트](https://discord.js.org/#/), [가이드](https://discordjs.guide/#before-you-begin), [문서](https://discord.js.org/#/docs/discord.js/main/general/welcome), [레포지토리](https://github.com/discordjs/discord.js/))
-    - **@pikokr/command.ts** `**v5.3 이상**` (참고: [가이드](https://cts.pikokr.dev/next/tutorial/intro), [레포지토리](https://github.com/pikokr/command.ts), [**템플릿**](https://github.com/pikokr/command.ts-v5-template))
+    - **@pikokr/command.ts** `**v5.3 이상**` (참고: [가이드](https://cts.pikokr.dev/next/tutorial/intro), [레포지토리](https://github.com/pikokr/command.ts), [**템플릿**](https://github.com/pikokr/command.ts-v5-template) - 참고하시면 좋습니다)
     - **mongoose `v6.5.3 이상`** (참고: [문서](https://mongoosejs.com/docs/guide.html))
     - **prettier** (참고: [웹사이트](https://prettier.io/))
 
@@ -29,7 +29,7 @@
 ### 1.3. 구현해야 하는 기능/구조
 - 다음 타입스크립트 인터페이스의 구조와 주석의 내용을 참고하여 **mongoose 스키마로 구현**하세요.
 
-    ```jsx
+    ```ts
     interface IUser {
       id: string
       username: string
@@ -59,7 +59,6 @@
     - **(선택)** 크시야 <수식>을 입력할 경우 계산해주는 기능
 
   | 키워드 | 반응 | 호감도 증가량 |
-      | --- | --- | --- |
   | 안녕 | 안녕하세요 (닉네임)님! | 1 |
   | 안녕 | 안녕하세요! | 1 |
   | 좋아해 | 저도 (닉네임)님이 좋아요! | 3 |
@@ -77,3 +76,11 @@
     - 랭킹은 Discord의 Select 컴포넌트를 사용하여 보여줘야 합니다.
     - 같은 개수의 배지를 가진 경우 **더욱 먼저 해당 개수를 달성한 사람을 더 높은 순위로 취급**합니다.
     - 실제 크시의 기능 작동 방식을 참고하시면 좋습니다.
+
+  
+### 1.4. 제출 및 일정
+- **면접을 보신 후 과제를 확인하는 대로 이 레포지토리를 포크하여 프로젝트를 생성하신 후 `팀 크레센도 CAST` 채널에 레포지토리를 생성하였다고 저희에게 알려주세요.**
+  - **반드시 포크하신 후 작업을 진행해주세요.**
+  - 포크하신 후 이 README.md 파일은 삭제하거나 수정하셔도 좋습니다.
+- 2022년 11월 26일 이전에 면접을 보신 분들의 과제 제출일은 **2022년 12월 9일 23시 59분**까지이며, 이 시간을 기준으로 이후에 이루어진 커밋은 과제 평가에 포함되지 않습니다.
+- 마감일보다 일찍 완성하신 경우에는 팀 크레센도 팀원 모집 이메일 ([recruit@crsd.team](mailto:recruit@crsd.team))로 레포지토리 링크를 제출해주세요.
