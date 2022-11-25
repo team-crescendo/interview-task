@@ -11,7 +11,7 @@ export type UserProperty = {
 }
 
 export class User extends Entity {
-  public readonly id?: string
+  public readonly id!: string
   public readonly username!: string
   public readonly likability!: number
   public readonly battery!: number
