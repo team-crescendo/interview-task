@@ -7,8 +7,9 @@
 
 ### Branch
 
-| /      | Branch Name                |
-|--------|----------------------------|
-| Forte  | forte                      |
-| Xsi    | xsi                        |
-| Baechu | baechu                     |
+| /          | Branch Name                                                              |
+|------------|--------------------------------------------------------------------------|
+| Baechu     | baechu                                                                   |
+| Forte      | forte                                                                    |
+| Xsi Legacy | xsi (Legacy)                                                             |
+| Xsi 2022   | [xsi2022](https://github.com/team-crescendo/interview-task/tree/xsi2022) |
