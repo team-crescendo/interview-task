@@ -1,0 +1,20 @@
+{
+  "name": "interview-task-shift",
+  "version": "1.0.0",
+  "description": "- **작성**: 키뮤 (@키뮤, 크시 팀장, 크시 기획 및 콘텐츠 개발 담당)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/XxshiftxX/interview-task-shift.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/XxshiftxX/interview-task-shift/issues"
+  },
+  "homepage": "https://github.com/XxshiftxX/interview-task-shift#readme"
+}
