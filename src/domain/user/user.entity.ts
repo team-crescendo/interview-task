@@ -1,3 +1,5 @@
+import { Reaction } from "../react/reaction.entity"
+
 export class User {
   id!: string
   username!: string
@@ -8,5 +10,9 @@ export class User {
 
   public get likeLevel(): number {
     throw new Error("Not Implemented")
+  }
+
+  public setRewardForReaction(reaction: Reaction) {
+    this.likability += reaction.reward
   }
 }
