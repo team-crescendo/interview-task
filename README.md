@@ -12,7 +12,7 @@
 ## 2. 라이브러리 요구사항
 - **필수 라이브러리**
     - **discord.js `v14.3 이상`** (참고: [웹사이트](https://discord.js.org/#/), [가이드](https://discordjs.guide/#before-you-begin), [문서](https://discord.js.org/#/docs/discord.js/main/general/welcome), [레포지토리](https://github.com/discordjs/discord.js/))
-    - **@pikokr/command.ts** `**v5.3 이상**` (참고: [가이드](https://cts.pikokr.dev/next/tutorial/intro), [레포지토리](https://github.com/pikokr/command.ts), [**템플릿**](https://github.com/pikokr/command.ts-v5-template) - 참고하시면 좋습니다)
+    - **@pikokr/command.ts** `v5.3 이상` (버전에 주의해 주세요) (참고: [가이드](https://cts.pikokr.dev/next/tutorial/intro), [레포지토리](https://github.com/pikokr/command.ts), [**템플릿**](https://github.com/pikokr/command.ts-v5-template) - 참고하시면 좋습니다)
     - **mongoose `v6.5.3 이상`** (참고: [문서](https://mongoosejs.com/docs/guide.html))
     - **prettier** (참고: [웹사이트](https://prettier.io/))
 
