@@ -1,0 +1,17 @@
+name: Check Branches
+
+on: push
+
+jobs:
+  check:
+    name: Check
+    runs-on: ubuntu-18.04
+  
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Install Dependancy
+      run: npm install
+
+    - name: Run test
+      run: npm test
